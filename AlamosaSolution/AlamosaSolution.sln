@@ -5,9 +5,14 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Documents", "Solution Documents", "{C761B03D-2DF1-417D-B6C1-A36592CC12F5}"
 	ProjectSection(SolutionItems) = preProject
-		Data Sources.xlsx = Data Sources.xlsx
-		Information Package.docx = Information Package.docx
-		Star Schema.vsdx = Star Schema.vsdx
+		Solution Documents\Data Sources.xlsx = Solution Documents\Data Sources.xlsx
+		Solution Documents\Information Package.docx = Solution Documents\Information Package.docx
+		Solution Documents\Star Schema.vsdx = Solution Documents\Star Schema.vsdx
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DW Build", "DW Build", "{48CF74D3-A4AE-4016-AA78-024D51AFD175}"
+	ProjectSection(SolutionItems) = preProject
+		DW Build\BuildAlamosaDW.sql = DW Build\BuildAlamosaDW.sql
 	EndProjectSection
 EndProject
 Global

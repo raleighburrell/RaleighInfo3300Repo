@@ -1,0 +1,60 @@
+1,New Subscriber on your website : user email,1,,,,,,,notification,notification_created,,,
+2,A User unsubscribed from all your lists : user email,1,,,,,,,notification,notification_unsuball,,,
+3,A User unsubscribed : user email,1,,,,,,,notification,notification_unsub,,,
+4,A User refuses to receive e-mails from your website : user email A:L,1,,,,,,,notification,notification_refuse,,,
+5,New contact from your website : user email,1,,,,,,,notification,notification_contact,,,
+6,A user confirm his subscription : user email,1,,,,,,,notification,notification_confirm,,,
+7,subtag:name ucfirst trans:PLEASE_CONFIRM_SUB,1,,,,,,,notification,confirmation,,,
+8,Tourism Engine Cron Report mainreport,1,,,,,,,notification,report,,,
+9,Modify your subscription,1,,,,,,,notification,modif,,,
+10,trans:COM_USERS_EMAIL_ACCOUNT_DETAILS param1 param2,0,,,,,,,joomlanotification,joomla-directReg,,,
+11,trans:COM_USERS_EMAIL_ACCOUNT_DETAILS param1 param2,0,,,,,,,joomlanotification,joomla-ownActivReg,,,
+12,trans:COM_USERS_EMAIL_ACCOUNT_DETAILS param1 param2,0,,,,,,,joomlanotification,joomla-ownActivRegNoPwd,,,
+13,trans:COM_USERS_EMAIL_ACCOUNT_DETAILS param1 param2,0,,,,,,,joomlanotification,joomla-adminActivReg,,,
+14,trans:COM_USERS_EMAIL_ACCOUNT_DETAILS param1 param2,0,,,,,,,joomlanotification,joomla-adminActivRegNoPwd,,,
+15,trans:COM_USERS_EMAIL_USERNAME_REMINDER_SUBJECT param1,0,,,,,,,joomlanotification,joomla-usernameReminder,,,
+16,trans:COM_USERS_EMAIL_ACTIVATED_BY_ADMIN_ACTIVATION_SUBJECT param1 param2,0,,,,,,,joomlanotification,joomla-confirmActiv,,,
+17,trans:COM_USERS_EMAIL_PASSWORD_RESET_SUBJECT param1,0,,,,,,,joomlanotification,joomla-resetPwd,,,
+77,Welcome to The Tourism Engine DEMO Brochure Requst,1,,1399011941,Tourism Engine DEMO,demo@tourism-engine.com,Tourism Engine DEMO,demo@tourism-engine.com,welcome,welcome-to-rio-grande-country,,xmGMGIGw,
+100,Welcome to Alamosa Colorado,1,,1423168413,Alamosa Convention & Visitors Bureau,alamosa@tourism-engine.com,Alamosa Convention & Visitors Bureau,honey+alamosa@internethoney.com,welcome,welcome-to-alamosa-colorado,,KhDzI8nd,
+97,Hello {subtag:first_name} from Alamosa,1,1506365561,1418338814,"Alamosa, Colorado",alamosa@tourism-engine.com,"Alamosa, Colorado",honey+alamosa@internethoney.com,news,welcome-3rd-party-lead-email,,MNNCRBOT,168
+99,Getting Warmer,1,1421166407,1420844314,,,,,news,enews-january-2015,,3flcp45r,164
+95,Hello {subtag:first_name} from Alamosa,1,,1418066067,"Alamosa, Colorado",alamosa@tourism-engine.com,"Alamosa, Colorado",honey+alamosa@internethoney.com,welcome,hello_from,,P6NnubLE,
+102,Shake off the winter cobwebs,1,1424797200,1424550702,,,,,news,enews-february-2015,,f7d2ffbbe47e35ca2a3a9120a255680a,163
+111,Last Trip of Summer,1,1439911800,1439309938,,,,,news,enews-august-2015,,01f0d40e9602491e1a44d4a0f1acd8f7,160
+105,Get Ready Get Set Summertime!,1,1430235000,1429398508,,,,,news,enews-april-2015,,9df41c354c19a3d8c3eb5b2840cfe5d2,160
+110,Skip the I-70 Traffic and Play Here,1,1436456079,1436368488,,,,,news,enews-july-2015,,78c10a29e68391c056522d511610de16,163
+108,Cowboys Music and Sandy Shenanigans,1,1432829400,1432827520,,,,,news,final-enews-may-2015,,gFBLqBBL,160
+112,Holiday Happenings,1,1448985600,1448471040,,,,,news,enews-december-2015,,538f97f8deef3dc92c7b71e0318be496,165
+113,Adventure's Calling,1,1452618000,1452205390,,,,,news,enews-january-2016,,dabaaef01cd8349f6a781d166ae95d3e,165
+114,Get Ready for Summer!,1,1462375800,1462215480,,,,,news,enews-may-2016,,cae1631cb1ef91022a93e34ff3058e31,165
+117,Summer Fun!,1,1464796800,1464278016,,,,,news,enews-june-2016,,9da3082f60c6fc23edd7a34b3bce1c34,165
+118,Find Your Adventure,1,1467907200,1467149478,,,,,news,enews-july-2016,,cdb75bb3e349385497de1d313d6df68c,165
+119,Enjoy the Last Days of Summer with Us!,1,1470155400,1469114474,,,,,news,enews-august-2016,,b57b8620fd9f39b160ffbf40f00b6e1d,165
+121,A Perfect View of Fall,1,1473264300,1472754396,,,,,news,enews-september-2016,,b2d6f3b16ed5cf38f57669fa7f1aaa00,165
+123,Visit Alamosa,1,1488393506,1488319161,,,,,news,enews-survey-2017,,1c74271036526073948db047c93452e8,165
+124,Welcome Ride the Rockies,1,1493305800,1488990558,,,,,news,enews-rtr-2017,,d40b3fdd1ba0ec5d78ce9cb6411a3ee8,165
+125,Alamosa Is Waiting To Hear from You!,1,1489593900,1489008760,,,,,news,enews-survey-2017,,dedc6f058b65afa72863f61f4d0a398e,165
+126,Time to Thaw Out,1,1490196600,1489686357,,,,,news,enews-march-2017,,9b0b09ba94946717638872c3d04a3f13,165
+127,What do the Great Sand Dunes mean to you?,1,1490385600,1490309698,,,,,news,enews-survey-2017,,6b9b70291f8814c3a0bf5be96a9937c6,165
+128,An Alamosa Summer,1,1498663800,1497976340,,,,,news,enews-june-2017,,7f2b2f3993942d8fffe0959b532816ea,165
+129,A user subscribed or modified his subscription : user email,1,,,,,,,notification,notification_contact_menu,,,
+130,{trans:PLG_USER_JOOMLA_NEW_USER_EMAIL_SUBJECT},0,,,,,,,joomlanotification,joomla-regByAdmin,,,
+131,{trans:COM_USERS_EMAIL_ACCOUNT_DETAILS|param1|param2},0,,,,,,,joomlanotification,joomla-regNotifAdmin,,,
+132,{trans:COM_USERS_EMAIL_ACTIVATE_WITH_ADMIN_ACTIVATION_SUBJECT|param2|param1},0,,,,,,,joomlanotification,joomla-regNotifAdminActiv,,,
+133,{senderSubject},0,,,,,,,joomlanotification,joomla-frontsendarticle,,,
+134,{trans:COM_COMMUNITY_ACCOUNT_DETAILS_FOR_WELCOME|param2},0,,,,,,,joomlanotification,jomsocial-directreg,,,
+135,{trans:COM_COMMUNITY_ACCOUNT_DETAILS_FOR|param1|param2},0,,,,,,,joomlanotification,jomsocial-ownactivreg,,,
+136,{trans:COM_COMMUNITY_ACCOUNT_DETAILS_FOR_WELCOME|param2},0,,,,,,,joomlanotification,jomsocial-welcomeactiv,,,
+137,{trans:COM_COMMUNITY_ACCOUNT_DETAILS_FOR|param1|param2},0,,,,,,,joomlanotification,jomsocial-regactivadmin,,,
+138,{trans:COM_COMMUNITY_ACCOUNT_DETAILS_FOR|param3|param2},0,,,,,,,joomlanotification,jomsocial-notifadmin,,,
+139,{trans:COM_COMMUNITY_ACCOUNT_DETAILS_FOR|param3|param2},0,,,,,,,joomlanotification,jomsocial-notifadminactiv,,,
+140,{trans:COM_COMMUNITY_EMAIL_ACTIVATED_BY_ADMIN_ACTIVATION_SUBJECT|param1|param2},0,,,,,,,joomlanotification,jomsocial-notifactivated,,,
+141,{trans:COM_COMMUNITY_USER_REGISTERED_WAITING_APPROVAL_TITLE|param2},0,,,,,,,joomlanotification,jomsocial-notifaccountparameters,,,
+142,{trans:COM_CCK_EMAIL_ACCOUNT_DETAILS|param1|param2},0,,,,,,,joomlanotification,seblod-directreg,,,
+143,{trans:COM_CCK_EMAIL_ACCOUNT_DETAILS|param1|param2},0,,,,,,,joomlanotification,seblod-directregnopwd,,,
+144,{trans:ACY_DEFAULT_NOTIF_SUBJECT},0,,,,,,,joomlanotification,seblod-notifadmin,,,
+145,{trans:COM_CCK_EMAIL_ACCOUNT_DETAILS|param1|param2},0,,,,,,,joomlanotification,seblod-ownactivreg,,,
+146,{trans:COM_CCK_EMAIL_ACCOUNT_DETAILS|param1|param2},0,,,,,,,joomlanotification,seblod-ownactivregnopwd,,,
+147,{trans:COM_CCK_EMAIL_ACCOUNT_DETAILS|param1|param2},0,,,,,,,joomlanotification,seblod-adminactivreg,,,
+148,{trans:COM_CCK_EMAIL_ACCOUNT_DETAILS|param1|param2},0,,,,,,,joomlanotification,seblod-adminactivregnopwd,,,

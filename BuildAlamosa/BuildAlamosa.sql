@@ -2,10 +2,19 @@
 --Version 1
 --Buil Alamosa Database
 --
--- Replace <data_path> with the full path to this file 
--- Ensure it ends with a backslash. 
+-- Replace <data_path> with the full path to this file
+-- Ensure it ends with a backslash.
 -- E.g., C:\MyDatabases\ See line 16
 --
+--Tables Built:
+--	Suscriber
+--	Mail
+--	Url
+--	UrlClick
+--	List
+--	ListMail
+--	ListSubscriber
+--	Geolocation
 
 --Step 1: Create Databse
 IF NOT EXISTS(SELECT * FROM sys.databases  --only adds if it doesn't exist
@@ -16,61 +25,62 @@ USE Alamosa
 
 DECLARE
 	@data_path NVARCHAR(256);
-SELECT @data_path = '\\Mac\Home\Documents\DU YR 3\INFO 3300\Project\Alamosa Tourism\BuildAlamosa\'; --Change this!
+SELECT @data_path = '\\Mac\Home\Documents\GitHub\RaleighInfo3300Repo\BuildAlamosa\'; --Change this!
+GO
 
 
 --Step 2: Delete Existing Tables
 IF EXISTS( --removes a table if it exists
-	SELECT * 
+	SELECT *
 	FROM sys.tables
 	WHERE name = N'ListSubscriber'
 	)
 	DROP TABLE ListSubscriber;
 
-IF EXISTS( --removes a table if it exists
-	SELECT * 
+IF EXISTS(
+	SELECT *
 	FROM sys.tables
 	WHERE name = N'ListMail'
 	)
 	DROP TABLE ListMail;
 
-IF EXISTS( --removes a table if it exists
-	SELECT * 
+IF EXISTS(
+	SELECT *
 	FROM sys.tables
 	WHERE name = N'UrlClick'
 	)
 	DROP TABLE UrlClick;
 
-IF EXISTS( --removes a table if it exists
-	SELECT * 
+IF EXISTS(
+	SELECT *
 	FROM sys.tables
 	WHERE name = N'Mail'
 	)
 	DROP TABLE Mail;
 
-IF EXISTS( --removes a table if it exists
-	SELECT * 
+IF EXISTS(
+	SELECT *
 	FROM sys.tables
 	WHERE name = N'Subscriber'
 	)
 	DROP TABLE Subscriber;
 
-IF EXISTS( --removes a table if it exists
-	SELECT * 
+IF EXISTS(
+	SELECT *
 	FROM sys.tables
 	WHERE name = N'List'
 	)
 	DROP TABLE List;
 
-IF EXISTS( --removes a table if it exists
-	SELECT * 
+IF EXISTS(
+	SELECT *
 	FROM sys.tables
 	WHERE name = N'GeoLocation'
 	)
 	DROP TABLE GeoLocation;
 
-IF EXISTS( --removes a table if it exists
-	SELECT * 
+IF EXISTS(
+	SELECT *
 	FROM sys.tables
 	WHERE name = N'Url'
 	)
@@ -91,19 +101,19 @@ CREATE TABLE Subscriber
   Email NVARCHAR(200),
   UserID INT,
   Name NVARCHAR(250),
-  Created DATETIME,
+  Created_UNIX INT,
   Confirmed INT,
   Enabled INT,
   Accept INT,
   IP NVARCHAR(100),
   Html INT,
   [Key] NVARCHAR(250),
-  ConfirmedDate DATETIME,
+  ConfirmedDate_UNIX INT,
   ConfirmedIP NVARCHAR(100),
-  LastOpenDate DATETIME,
+  LastOpenDate_UNIX INT,
   LastOpenIP NVARCHAR(100),
-  LastClickDate DATETIME,
-  LastSentDate DATETIME,
+  LastClickDate_UNIX INT,
+  LastSentDate_UNIX INT,
   Street NVARCHAR(250),
   Suite NVARCHAR(250),
   City NVARCHAR(250),
@@ -127,34 +137,31 @@ CREATE TABLE Subscriber
   HowHeardOther NVARCHAR(250),
   ArrivalDate NVARCHAR(250),
   ContactUs NVARCHAR(250),
-  Source NVARCHAR(250)
+  [Source] NVARCHAR(250)
   );
 
 --GeoLocation
 CREATE TABLE GeoLocation
   (GeoLocationID INT CONSTRAINT pk_geolocation PRIMARY KEY,
-  SubscriberID INT CONSTRAINT fk_geolocation_subscriber FOREIGN KEY REFERENCES Subscriber(SubscriberID),
-  [Type] NVARCHAR(255),
-  IP NVARCHAR(255),
-  Created DATETIME,
-  Latitude DECIMAL(9,6),
-  Longitude DECIMAL(9,6),
-  PostalCode NVARCHAR(255),
-  Country NVARCHAR(255),
-  CountryCode NVARCHAR(255),
-  State NVARCHAR(255),
-  StateCode NVARCHAR(255),
-  City NVARCHAR(255),
-  Continent NVARCHAR(255),
-  TimeZone NVARCHAR(255)
+  IP NVARCHAR(255) UNIQUE,
+  CountryCode NVARCHAR(2),
+  CountryName NVARCHAR(50),
+  RegionCode NVARCHAR(3),
+  RegionName NVARCHAR(50),
+  City NVARCHAR(50),
+  ZIP NVARCHAR(15),
+  TimeZone NVARCHAR(50),
+  Latitude DECIMAL(20,10),
+  Longitude DECIMAL(20,10),
+  MetroCode NVARCHAR(10)
   );
 
 ---List
 CREATE TABLE List
-  (ListID INT CONSTRAINT pk_list PRIMARY KEY,
-  Name NVARCHAR(250),
+  (Name NVARCHAR(250),
   Description NTEXT,
   Ordering INT,
+  ListID INT CONSTRAINT pk_list PRIMARY KEY,
   Published INT,
   UserID INT,
   Alias NVARCHAR(250),
@@ -173,46 +180,29 @@ CREATE TABLE List
 ---Mail
 CREATE TABLE Mail
   (MailID INT CONSTRAINT pk_mail PRIMARY KEY,
-  TemplateID INT CONSTRAINT fk_mail_template FOREIGN KEY REFERENCES Template(TemplateID),
-  Subject NTEXT,
-  Body NTEXT,
-  AltBody NTEXT,
+  [Subject] NVARCHAR(250),
   Published INT,
-  SentDate DATETIME,
-  Created DATETIME,
+  SentDate_UNIX INT,
+  Created_UNIX INT,
   FromName NVARCHAR(250),
   FromEmail NVARCHAR(250),
   ReplyName NVARCHAR(250),
   ReplyEmail NVARCHAR(250),
   [Type] NVARCHAR(50),
-  Visible INT,
-  UserID INT,
   Alias NVARCHAR(250),
   Attach NTEXT,
-  Html INT,
   [Key] NVARCHAR(200),
-  Frequency NVARCHAR(50),
-  Params NTEXT,
-  SentBy INT,
-  MetaKey NTEXT,
-  MetaDesc NTEXT,
-  Filter NTEXT,
-  Language NVARCHAR(50),
-  ABTesting NVARCHAR(250),
-  Thumb NVARCHAR(250),
-  Summary NTEXT,
-  FavIcon NTEXT,
-  BCCAddresses NVARCHAR(250)
+  SentBy NVARCHAR(250),
   );
 
 ---UrlClick
 CREATE TABLE UrlClick
   (UrlID INT CONSTRAINT fk_urlclick_url FOREIGN KEY REFERENCES Url(UrlID),
   MailID INT CONSTRAINT fk_urlclick_mail FOREIGN KEY REFERENCES Mail(MailID),
-  SubscriberID INT CONSTRAINT fk_urlclick_subscriber FOREIGN KEY REFERENCES Subscriber(SubscriberID),
+  SubscriberID INT, --throwing error CONSTRAINT fk_urlclick_subscriber FOREIGN KEY REFERENCES Subscriber(SubscriberID),
   Click INT,
-  [Date] DATETIME,
-  IP NVARCHAR(100)
+  ClickDate_UNIX INT,
+  IP NVARCHAR(255), --based on Sub so error as well CONSTRAINT fk_urlclick_geolocation FOREIGN KEY REFERENCES GeoLocation(IP)
   );
 
 ---ListMail
@@ -224,39 +214,18 @@ CREATE TABLE ListMail
 ---ListSub
 CREATE TABLE ListSubscriber
   (ListID INT CONSTRAINT fk_listsubscriber_list FOREIGN KEY REFERENCES List(ListID),
-  SubscriberID INT CONSTRAINT fk_listsubscriber_subscriber FOREIGN KEY REFERENCES Subscriber(SubscriberID),
-  SuscribeDate DATETIME,
-  UnsuscriberDate DATETIME,
+  SubscriberID INT, --throwing bizarre error too CONSTRAINT fk_listsubscriber_subscriber FOREIGN KEY REFERENCES Subscriber(SubscriberID),
+  SubscribeDate_UNIX INT,
+  UnsubscribeDate_UNIX INT,
   Status INT
   );
+GO
 
 
 --Step 4: Bulk Load the Data
----Template
-EXECUTE (N'BULK INSERT Template FROM ''' + @data_path + N'Template.csv''
-WITH (
-	CHECK_CONSTRAINTS,
-	CODEPAGE=''ACP'',
-	DATAFILETYPE = ''char'',
-	FIELDTERMINATOR= '','',
-	ROWTERMINATOR = ''\n'',
-	KEEPIDENTITY,
-	TABLOCK
-	);
-');
-
----Tag
-EXECUTE (N'BULK INSERT Tag FROM ''' + @data_path + N'Tag.csv''
-WITH (
-	CHECK_CONSTRAINTS,
-	CODEPAGE=''ACP'',
-	DATAFILETYPE = ''char'',
-	FIELDTERMINATOR= '','',
-	ROWTERMINATOR = ''\n'',
-	KEEPIDENTITY,
-	TABLOCK
-	);
-');
+DECLARE
+	@data_path NVARCHAR(256);
+SELECT @data_path = '\\Mac\Home\Documents\GitHub\RaleighInfo3300Repo\BuildAlamosa\'; --Change this!
 
 ---Url
 EXECUTE (N'BULK INSERT Url FROM ''' + @data_path + N'Url.csv''
@@ -298,7 +267,7 @@ WITH (
 ');
 
 ---Subscriber
-EXECUTE (N'BULK INSERT Subscriber FROM ''' + @data_path + N'Subscriber.csv''
+EXECUTE (N'BULK INSERT Subscriber FROM ''' + @data_path + N'Subscriber2.csv''
 WITH (
 	CHECK_CONSTRAINTS,
 	CODEPAGE=''ACP'',
@@ -311,20 +280,7 @@ WITH (
 ');
 
 ---Mail
-EXECUTE (N'BULK INSERT Mail FROM ''' + @data_path + N'Mail.csv''
-WITH (
-	CHECK_CONSTRAINTS,
-	CODEPAGE=''ACP'',
-	DATAFILETYPE = ''char'',
-	FIELDTERMINATOR= '','',
-	ROWTERMINATOR = ''\n'',
-	KEEPIDENTITY,
-	TABLOCK
-	);
-');
-
----TagMail
-EXECUTE (N'BULK INSERT TagMail FROM ''' + @data_path + N'TagMail.csv''
+EXECUTE (N'BULK INSERT Mail FROM ''' + @data_path + N'Mail2.csv''
 WITH (
 	CHECK_CONSTRAINTS,
 	CODEPAGE=''ACP'',
@@ -375,21 +331,59 @@ WITH (
 	);
 ');
 
-
---List Table Names & Row Counts
+---List Table Names & Row Counts
 GO
 SET NOCOUNT ON
-SELECT 'Template' "Table",	COUNT(*) "Rows"	FROM Template		UNION
-SELECT 'Tag',				COUNT(*)		FROM Tag			UNION
-SELECT 'Url',				COUNT(*)		FROM Url			UNION
+SELECT 'Url' "Table",		COUNT(*) "Rows"	FROM Url			UNION
 SELECT 'GeoLocation',		COUNT(*)		FROM GeoLocation	UNION
 SELECT 'List',				COUNT(*)		FROM List			UNION
 SELECT 'Subscriber',        COUNT(*)		FROM Subscriber		UNION
 SELECT 'Mail',				COUNT(*)		FROM Mail			UNION
-SELECT 'TagMail',			COUNT(*)		FROM TagMail		UNION
 SELECT 'UrlClick',			COUNT(*)		FROM UrlClick		UNION
 SELECT 'ListMail',			COUNT(*)		FROM ListMail		UNION
 SELECT 'ListSubscriber',	COUNT(*)		FROM ListSubscriber
 ORDER BY 1;
 SET NOCOUNT OFF
+GO
+
+
+--Step 5: Converting UNIX Timestamp Int to Date Time
+---Function to Convert from https://stackoverflow.com/questions/2904256/how-can-i-convert-bigint-unix-timestamp-to-datetime-in-sql-server
+USE Alamosa
+GO
+IF OBJECT_ID(N'dbo.fn_ConvertToDateTime', N'FN') IS NOT NULL
+DROP FUNCTION dbo.fn_ConvertToDateTime;
+GO
+CREATE FUNCTION dbo.fn_ConvertToDateTime (@Datetime BIGINT)
+RETURNS DATETIME
+AS
+BEGIN
+    DECLARE @LocalTimeOffset BIGINT
+           ,@AdjustedLocalDatetime BIGINT;
+    SET @LocalTimeOffset = DATEDIFF(second,GETDATE(),GETUTCDATE())
+    SET @AdjustedLocalDatetime = @Datetime - @LocalTimeOffset
+    RETURN (SELECT DATEADD(second,@AdjustedLocalDatetime, CAST('1970-01-01 00:00:00' AS datetime)))
+END;
+GO
+
+---Actual  Conversion
+USE Alamosa
+GO
+ALTER TABLE Subscriber
+ADD Created AS dbo.fn_ConvertToDateTime(Created_UNIX),
+	ConfirmedDate AS dbo.fn_ConvertToDateTime(ConfirmedDate_UNIX),
+	LastOpenDate AS dbo.fn_ConvertToDateTime(LastOpenDate_UNIX),
+	LastClickDate AS dbo.fn_ConvertToDateTime(LastClickDate_UNIX),
+	LastSentDate AS dbo.fn_ConvertToDateTime(LastSentDate_UNIX);
+
+ALTER TABLE Mail
+ADD SentDate AS dbo.fn_ConvertToDateTime(SentDate_UNIX),
+	Created AS dbo.fn_ConvertToDateTime(Created_UNIX);
+
+ALTER TABLE UrlClick
+ADD ClickDate AS dbo.fn_ConvertToDateTime(ClickDate_UNIX);
+
+ALTER TABLE ListSubscriber
+ADD SubscribeDate AS dbo.fn_ConvertToDateTime(SubscribeDate_UNIX),
+	UnsubscribeDate AS dbo.fn_ConvertToDateTime(UnsubscribeDate_UNIX);
 GO
